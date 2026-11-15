@@ -3,7 +3,9 @@ package com.cibertec.semana2.services;
 import com.cibertec.semana2.dtos.TrabajadorDTO;
 import com.cibertec.semana2.entity.TrabajadorEntity;
 import com.cibertec.semana2.repositories.ITrabajadorRepository;
+import com.cibertec.semana2.repositories.ITrabajadorRepositoryPage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 
@@ -14,6 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TrabajadorService implements ITrabajadorService {
     private final ITrabajadorRepository iTrabajadorRepository;
+    private final ITrabajadorRepositoryPage iTrabajadorRepositoryPage;
     private final ObjectMapper objectMapper;
 
     //List<TrabajadorDTO> listaTrabajador = new ArrayList<>();
@@ -49,5 +52,20 @@ public class TrabajadorService implements ITrabajadorService {
         trabajadorDTO.setId(null);
         TrabajadorEntity trabajadorEntity = objectMapper.convertValue(trabajadorDTO, TrabajadorEntity.class);
         return objectMapper.convertValue(iTrabajadorRepository.save(trabajadorEntity), TrabajadorDTO.class);
+    }
+
+    @Override
+    public List<TrabajadorDTO> getAllTrabajadorPage(Pageable pageable) {
+        return iTrabajadorRepositoryPage.findAll(pageable)
+                .get()
+                .map(e -> objectMapper.convertValue(e, TrabajadorDTO.class))
+                .toList();
+    }
+
+    @Override
+    public List<TrabajadorDTO> filtrarNombre(String nombre) {
+        return iTrabajadorRepository.filtrarNombre(nombre)
+                .stream().map(p -> objectMapper.convertValue(p, TrabajadorDTO.class))
+                .toList();
     }
 }

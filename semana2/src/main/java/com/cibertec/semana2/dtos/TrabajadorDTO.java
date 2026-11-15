@@ -1,7 +1,9 @@
 package com.cibertec.semana2.dtos;
 
 import jakarta.validation.constraints.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data //Setter, getter, toString, HashCod, All
 @NoArgsConstructor

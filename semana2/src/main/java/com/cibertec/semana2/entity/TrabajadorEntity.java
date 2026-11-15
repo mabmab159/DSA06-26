@@ -2,7 +2,10 @@ package com.cibertec.semana2.entity;
 
 import com.cibertec.semana2.dtos.RolEnum;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
