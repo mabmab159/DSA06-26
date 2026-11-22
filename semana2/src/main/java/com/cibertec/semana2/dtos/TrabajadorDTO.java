@@ -2,10 +2,12 @@ package com.cibertec.semana2.dtos;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data //Setter, getter, toString, HashCod, All
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class TrabajadorDTO {
