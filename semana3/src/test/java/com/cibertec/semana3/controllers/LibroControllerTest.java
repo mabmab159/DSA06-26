@@ -1,5 +1,6 @@
 package com.cibertec.semana3.controllers;
 
+import com.cibertec.semana3.configuration.LibroModelAssembler;
 import com.cibertec.semana3.services.ILibroService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(LibroController.class)
 class LibroControllerTest {
+    @MockitoBean
+    private LibroModelAssembler libroModelAssembler;
+
     @Autowired
     private MockMvc mockMvc;
 
